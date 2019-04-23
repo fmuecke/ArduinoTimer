@@ -1,4 +1,6 @@
-/*
+/* 
+ * Copyright (c) 2019 Florian Mücke
+ * 
  * Requires: 
  *   - Arduino
  *   - 1637 4-DigiLED Display
@@ -180,17 +182,21 @@ int GetTimeRemaining()
 
 void DisplayTime(int totalSecs)
 {
-  int minutes = totalSecs / 60;
-  int seconds = totalSecs % 60;
-  
-  int8_t TimeDisp[] = {0x00,0x00,0x00,0x00};
-  TimeDisp[0] = minutes / 10;
-  TimeDisp[1] = minutes % 10;
-  TimeDisp[2] = seconds / 10;
-  TimeDisp[3] = seconds % 10;
-  disp.display(TimeDisp);
-  
-  //Serial.print(minutes);
-  //Serial.print(":");
-  //Serial.println(seconds);
+  if (timerValue != totalSecs)
+  {
+    timerValue = totalSecs;
+    int minutes = totalSecs / 60;
+    int seconds = totalSecs % 60;
+    
+    int8_t TimeDisp[] = {0x00,0x00,0x00,0x00};
+    TimeDisp[0] = minutes / 10;
+    TimeDisp[1] = minutes % 10;
+    TimeDisp[2] = seconds / 10;
+    TimeDisp[3] = seconds % 10;
+    disp.display(TimeDisp);
+    
+    //Serial.print(minutes);
+    //Serial.print(":");
+    //Serial.println(seconds);
+  }
 }
