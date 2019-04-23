@@ -29,7 +29,7 @@ const int CLK_pin = 2; //pins definitions for TM1637 and can be changed to other
 const int DIO_pin = 3;
 
 // constants 
-const unsigned int incrementInterval = 10;
+const unsigned int incrementInterval = 60;
 
 // global vars
 unsigned int startTick = 0;
